@@ -5,6 +5,9 @@ import { applyMiddleware } from "graphql-middleware";
 import gc from "gc-stats";
 import express from "express";
 import { generateMovies } from "./data";
+import fs from "fs";
+
+const v8Profiler = require("v8-profiler-next");
 
 // Configure how stuff runs
 /**
