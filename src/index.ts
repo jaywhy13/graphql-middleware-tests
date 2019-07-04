@@ -120,3 +120,27 @@ app.listen({ port: 4000 }, () => {
   console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
   console.log((USING_SHIELD ? "Using" : "WITHOUT") + " Shield");
 });
+
+var stopProfiling = (profileId: String) => {
+  let profile = v8Profiler.stopProfiling(profileId);
+  let filename = __dirname + "/../profiles/" + profileId + ".cpuprofile";
+  console.log("Writing profile file to ", filename);
+  fs.writeFile(filename, JSON.stringify(profile), () =>
+    console.log("Profiler data written")
+  );
+};
+
+app.get("/start-profiling/id/:profileId/duration/:durationInSec", function(
+  req,
+  res
+) {
+  let profileId = req.params["profileId"];
+  let durationInMilliSec = req.params["durationInSec"] * 1000;
+  // Start profiling
+  console.log("Starting profiler");
+  v8Profiler.startProfiling(profileId);
+  setTimeout(function() {
+    stopProfiling(profileId);
+  }, durationInMilliSec);
+  res.json({});
+});
