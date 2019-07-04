@@ -4,13 +4,30 @@ import { shield } from "graphql-shield";
 import { applyMiddleware } from "graphql-middleware";
 import gc from "gc-stats";
 import express from "express";
-import { MOVIES, getRandomString } from "./data";
+import { generateMovies } from "./data";
+
+// Configure how stuff runs
+/**
+ * How often we should report garbage collection stats
+ */
+const REPORT_EVERY = 20;
+/**
+ * Apply the Shield middleware
+ */
+const USING_SHIELD = true;
+/**
+ * Number of movies to generate
+ */
+const NUM_MOVIES = 100;
+/**
+ * How long to delay before returning a response
+ */
+const DEFAULT_DELAY = 5;
+
+const MOVIES = generateMovies(NUM_MOVIES);
 
 const app = express();
 let collectionStats: Array<any> = [];
-
-const REPORT_EVERY = 20;
-const USING_SHIELD = true;
 
 const getMinMaxAndAvg = (
   stats: Array<any>,
@@ -54,11 +71,9 @@ const delayAndReturn = async (
   value: any,
   seconds: number = 5
 ): Promise<any> => {
-  //   console.log("🕓 Delaying request for ", seconds, "s");
   return new Promise<any>(resolve => {
     const milliseconds = seconds * 1000;
     setTimeout(() => {
-      //   console.log("✅  Resolved\n");
       resolve(value);
     }, milliseconds);
   });
@@ -100,9 +115,6 @@ const schemaWithMiddleware = USING_SHIELD
   : applyMiddleware(schema);
 const server = new ApolloServer({ schema: schemaWithMiddleware });
 server.applyMiddleware({ app });
-
-console.log("movies = ", MOVIES);
-console.log(typeof getRandomString);
 
 app.listen({ port: 4000 }, () => {
   console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
