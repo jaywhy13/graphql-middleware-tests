@@ -1,0 +1,86 @@
+Single promise
+With shield:
+- Garbage collections:
+    - 11
+    - 14
+    - 10
+    - 15
+    - 12
+
+Without shield:
+- Garbage collections
+    - 10
+    - 10
+    - 20
+
+Without shield:
+Collections: 20 0ms 6ms 10ms
+Collections: 40 0ms 7ms 10ms
+Collections: 60 0ms 7ms 13ms
+Collections: 80 0ms 7ms 13ms
+Collections: 100 0ms 7ms 13ms
+Collections: 120 0ms 7ms 13ms
+Collections: 140 0ms 7ms 13ms
+Collections: 160 0ms 7ms 13ms
+
+Collections: 20 0ms 5ms 8ms
+Collections: 40 0ms 6ms 9ms
+Collections: 60 0ms 6ms 13ms
+Collections: 80 0ms 6ms 13ms
+Collections: 100 0ms 6ms 13ms
+Collections: 120 0ms 6ms 15ms
+Collections: 140 0ms 6ms 15ms
+Collections: 160 0ms 6ms 15ms
+
+Collections: 20 0ms 6ms 9ms
+Collections: 40 0ms 6ms 10ms
+Collections: 60 0ms 6ms 11ms
+Collections: 80 0ms 6ms 11ms
+Collections: 100 0ms 6ms 11ms
+Collections: 120 0ms 7ms 13ms
+Collections: 140 0ms 7ms 13ms
+Collections: 160 0ms 7ms 13ms
+Collections: 180 0ms 7ms 13ms
+
+Collections: 20 0ms 3ms 7ms -2MB 1MB 6MB
+Collections: 40 0ms 4ms 9ms -2MB 3MB 6MB
+Collections: 60 0ms 5ms 9ms -2MB 3MB 6MB
+Collections: 80 0ms 5ms 10ms -14MB 3MB 6MB
+Collections: 100 0ms 6ms 16ms -18MB 2MB 6MB
+Collections: 120 0ms 6ms 16ms -18MB 2MB 6MB
+Collections: 140 0ms 6ms 16ms -18MB 2MB 6MB
+Collections: 160 0ms 6ms 16ms -18MB 2MB 6MB
+Collections: 180 0ms 6ms 16ms -18MB 1MB 6MB
+
+With shield:
+Collections: 20 0ms 6ms 7ms
+Collections: 40 0ms 6ms 10ms
+Collections: 60 0ms 6ms 14ms
+Collections: 80 0ms 6ms 14ms
+Collections: 100 0ms 6ms 14ms
+Collections: 120 0ms 6ms 14ms
+Collections: 140 0ms 6ms 14ms
+Collections: 160 0ms 6ms 14ms
+Collections: 180 0ms 6ms 14ms
+
+Collections: 20 0ms 6ms 9ms 0MB 4MB 6MB
+Collections: 40 0ms 6ms 9ms 0MB 4MB 6MB
+Collections: 60 0ms 6ms 20ms -12MB 3MB 6MB
+Collections: 80 0ms 6ms 20ms -12MB 3MB 6MB
+Collections: 100 0ms 6ms 20ms -21MB 3MB 6MB
+Collections: 120 0ms 6ms 20ms -21MB 2MB 6MB
+Collections: 140 0ms 6ms 20ms -21MB 2MB 6MB
+Collections: 160 0ms 6ms 20ms -21MB 2MB 6MB
+Collections: 180 0ms 6ms 20ms -21MB 2MB 6MB
+Collections: 200 0ms 6ms 20ms -228MB 0MB 6MB
+
+Collections: 20 0ms 5ms 8ms 0MB 4MB 6MB
+Collections: 40 0ms 6ms 10ms 0MB 4MB 6MB
+Collections: 60 0ms 6ms 10ms -9MB 3MB 6MB
+Collections: 80 0ms 6ms 10ms -9MB 3MB 6MB
+Collections: 100 0ms 6ms 15ms -22MB 2MB 6MB
+Collections: 120 0ms 6ms 15ms -22MB 2MB 6MB
+Collections: 140 0ms 6ms 15ms -22MB 2MB 6MB
+Collections: 160 0ms 6ms 15ms -22MB 2MB 6MB
+Collections: 180 0ms 6ms 15ms -22MB 2MB 6MB
+Collections: 200 0ms 5ms 15ms -137MB 1MB 6MB
